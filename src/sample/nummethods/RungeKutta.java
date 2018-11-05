@@ -15,11 +15,11 @@ public class RungeKutta extends Euler {
      * @return
      */
     @Override
-    protected double funcYi(double xPrev, double yPrev) {
+    protected double nextY(double xPrev, double yPrev) {
         double k1 = super.h*super.diffur(yPrev);
         double k2 = super.h*super.diffur(yPrev + k1/2);
         double k3 = super.h*super.diffur(yPrev + k2/2);
         double k4 = super.h*super.diffur(yPrev + k3);
-        return (yPrev+ (1.0/6.0)*(k1+2*k2+2*k3+k4));
+        return (yPrev+ (k1+2*k2+2*k3+k4)*(1.0/6.0));
     }
 }

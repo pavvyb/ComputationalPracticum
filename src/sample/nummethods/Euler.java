@@ -36,7 +36,7 @@ public class Euler {
         double error = Math.abs(exact(x0) - y0);
         maxError = error;
         errorsDataset.add(new XYChart.Data(x0, error));
-        double y = funcYi(x0, y0);
+        double y = nextY(x0, y0);
 
         for (double xi = x0 + h; xi <= X; xi += h) {
             error = Math.abs(exact(xi) - y);
@@ -45,7 +45,7 @@ public class Euler {
             }
             dataset.add(new XYChart.Data(xi, y));
             errorsDataset.add(new XYChart.Data(xi, error));
-            y = funcYi(xi, y);
+            y = nextY(xi, y);
         }
         errorSeries.setData(errorsDataset);
         series.setData(dataset);
@@ -53,7 +53,6 @@ public class Euler {
 
     /**
      * Given Differential Equation
-     * @param x
      * @param y
      * @return
      */
@@ -68,7 +67,7 @@ public class Euler {
      * @param yLast
      * @return
      */
-    protected double funcYi(double xLast, double yLast) {
+    protected double nextY(double xLast, double yLast) {
         return (eulerY(xLast, yLast));
     }
 
@@ -89,10 +88,19 @@ public class Euler {
      * @return
      */
     protected double exact(double xPrev) {
-        double cons = log(1 + pow(y0, 1/2)) - x0;
+        double cons = constanta(y0, x0);
         return pow(exp(xPrev+ cons)-1,2);
     }
 
+    /**
+     * Helper method to get C (const)
+     * @param y0 - input initial conditions
+     * @param x0 - input initial conditions
+     * @return
+     */
+    private Double constanta(double y0, double x0){
+        return log(1 + pow(y0, 1/2)) - x0;
+    }
 
     public XYChart.Series getSeries() {
         return series;
