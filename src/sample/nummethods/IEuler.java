@@ -16,6 +16,6 @@ public class IEuler extends Euler{
      */
     @Override
     protected double funcYi(double xPrev, double yPrev) {
-        return yPrev+super.h*((super.diffur(xPrev,yPrev)+super.diffur(xPrev+super.h, super.eulerY(xPrev,yPrev)))/2);
+        return yPrev+super.h*((super.diffur(yPrev)+super.diffur(super.eulerY(xPrev,yPrev)))/2);
     }
 }

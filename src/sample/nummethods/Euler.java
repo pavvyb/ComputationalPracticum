@@ -57,7 +57,7 @@ public class Euler {
      * @param y
      * @return
      */
-    protected double diffur(double x, double y) {
+    protected double diffur(double y) {
         return (2*(pow(y,1/2)) + 2*y);
     }
 
@@ -80,7 +80,7 @@ public class Euler {
      * @return
      */
     protected double eulerY(double xPrev, double yPrev) {
-        return yPrev + h * diffur(xPrev, yPrev);
+        return yPrev + h * diffur(yPrev);
     }
 
     /**
