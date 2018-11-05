@@ -18,7 +18,7 @@
     <children>
         <TabPane prefHeight="700.0" prefWidth="1280.0" tabClosingPolicy="ALL_TABS">
             <tabs>
-                <Tab text="Solution">
+                <Tab text="Graphs">
                     <content>
                         <SplitPane dividerPositions="0.29797979797979796" prefHeight="160.0" prefWidth="200.0">
                             <items>
@@ -37,10 +37,10 @@
                                             <font>
                                                 <Font name="Calibri" size="34.0" />
                                             </font></Label>
-                                        <TextField fx:id="textFieldx0" layoutX="92.0" layoutY="125.0" onAction="#updateAllInfo" prefHeight="31.0" prefWidth="133.0" />
-                                        <TextField fx:id="textFieldx1" layoutX="92.0" layoutY="202.0" onAction="#updateAllInfo" prefHeight="31.0" prefWidth="135.0" />
-                                        <TextField fx:id="textFieldx2" layoutX="92.0" layoutY="268.0" onAction="#updateAllInfo" prefHeight="31.0" prefWidth="134.0" />
-                                        <TextField fx:id="textFieldx3" layoutX="92.0" layoutY="342.0" onAction="#updateAllInfo" prefHeight="31.0" prefWidth="135.0" />
+                                        <TextField fx:id="textFieldx0" layoutX="92.0" layoutY="125.0" onAction="#updateInitVal" prefHeight="31.0" prefWidth="133.0" />
+                                        <TextField fx:id="textFieldx1" layoutX="92.0" layoutY="202.0" onAction="#updateInitVal" prefHeight="31.0" prefWidth="135.0" />
+                                        <TextField fx:id="textFieldx2" layoutX="92.0" layoutY="268.0" onAction="#updateInitVal" prefHeight="31.0" prefWidth="134.0" />
+                                        <TextField fx:id="textFieldx3" layoutX="92.0" layoutY="342.0" onAction="#updateInitVal" prefHeight="31.0" prefWidth="135.0" />
                                         <Label layoutX="42.0" layoutY="263.0" text="X" textAlignment="CENTER">
                                             <font>
                                                 <Font name="Calibri" size="34.0" />
@@ -77,10 +77,10 @@
                                                     <children>
                                                         <LineChart fx:id="ErrorChart" prefHeight="325.0" prefWidth="889.0" title="Error Graphs">
                                                             <xAxis>
-                                                                <NumberAxis side="BOTTOM" fx:id="xErrorAnal" />
+                                                                <NumberAxis side="BOTTOM" fx:id="xErrorAnalysis" />
                                                             </xAxis>
                                                             <yAxis>
-                                                                <NumberAxis fx:id="yErrorAnal" side="LEFT" />
+                                                                <NumberAxis fx:id="yErrorAnalysis" side="LEFT" />
                                                             </yAxis>
                                                         </LineChart>
                                                     </children>
@@ -114,8 +114,8 @@
                                                 <Font name="Calibri" size="34.0" />
                                             </font>
                                         </Label>
-                                        <TextField fx:id="errAnaln0" layoutX="92.0" layoutY="125.0" onAction="#updateAllInfo" prefHeight="31.0" prefWidth="133.0" />
-                                        <TextField fx:id="errAnalN" layoutX="92.0" layoutY="195.0" onAction="#updateAllInfo" prefHeight="31.0" prefWidth="135.0" />
+                                        <TextField fx:id="errorAnalysisn0" layoutX="92.0" layoutY="125.0" onAction="#updateInitVal" prefHeight="31.0" prefWidth="133.0" />
+                                        <TextField fx:id="errorAnalysisN" layoutX="92.0" layoutY="195.0" onAction="#updateInitVal" prefHeight="31.0" prefWidth="135.0" />
                                         <Label layoutX="41.0" layoutY="190.0" text="N" textAlignment="CENTER">
                                             <font>
                                                 <Font name="Calibri" size="34.0" />
@@ -129,7 +129,7 @@
                                             <items>
                                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                                                     <children>
-                                                        <LineChart fx:id="ErrorAnalChart" prefHeight="660.0" prefWidth="889.0" title="Error Graphs">
+                                                        <LineChart fx:id="ErrorAnalysisGraph" prefHeight="660.0" prefWidth="889.0" title="Error Graphs">
                                                             <xAxis>
                                                                 <NumberAxis side="BOTTOM" fx:id="xAxisError" />
                                                             </xAxis>

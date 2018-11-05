@@ -4,7 +4,6 @@ import javafx.fxml.FXML;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.control.TextField;
-import java.awt.*;
 
 
 public class Controller {
@@ -18,7 +17,7 @@ public class Controller {
     private LineChart ErrorChart;
 
     @FXML
-    private LineChart ErrorAnalChart;
+    private LineChart ErrorAnalysisGraph;
 
     @FXML
     private NumberAxis xAxis1;
@@ -33,11 +32,10 @@ public class Controller {
     private NumberAxis yAxisError;
 
     @FXML
-    private NumberAxis xErrorAnal;
+    private NumberAxis xErrorAnalysis;
 
     @FXML
-    private NumberAxis yErrorAnal;
-
+    private NumberAxis yErrorAnalysis;
 
     @FXML
     private TextField textFieldx0;
@@ -52,10 +50,10 @@ public class Controller {
     private TextField textFieldx3;
 
     @FXML
-    private TextField errAnaln0;
+    private TextField errorAnalysisn0;
 
     @FXML
-    private TextField errAnalN;
+    private TextField errorAnalysisN;
 
     @FXML
     public void initialize(){
@@ -65,14 +63,14 @@ public class Controller {
         textFieldx2.setText("9");
         textFieldx3.setText("20");
 
-        errAnaln0.setText("0");
-        errAnalN.setText("20");
+        errorAnalysisn0.setText("0");
+        errorAnalysisN.setText("20");
 
         xAxis1.setLabel("x");
         yAxis1.setLabel("y");
 
-        xErrorAnal.setLabel("x");
-        yErrorAnal.setLabel("error");
+        xErrorAnalysis.setLabel("x");
+        yErrorAnalysis.setLabel("error");
 
 
         xAxisError.setLabel("N");
@@ -86,26 +84,26 @@ public class Controller {
         xAxis1.setLowerBound(x0);
         MyChart1.getData().clear();
         ErrorChart.getData().clear();
-        ErrorAnalChart.getData().clear();
+        ErrorAnalysisGraph.getData().clear();
 
         MyChart1.getData().addAll(grid.getFuncSeries(), grid.getSeriesEuler(),
                 grid.getSeriesImprovedEuler(), grid.getSeriesRungeKutta());
         ErrorChart.getData().addAll(grid.getSeriesEulerError(), grid.getSeriesImprovedEulerError(),
                 grid.getSeriesRungeKuttaError());
-        ErrorAnalChart.getData().addAll(grid.getSeriesEulerErrorN(), grid.getSeriesImprovedEulerErrorN(),
+        ErrorAnalysisGraph.getData().addAll(grid.getSeriesEulerErrorN(), grid.getSeriesImprovedEulerErrorN(),
                 grid.getSeriesRungeKuttaErrorN());
 
 
     }
 
-    public void updateAllInfo(){
+    public void updateInitVal(){
         Double x0=Double.parseDouble(textFieldx0.getText());
         Double y0=Double.parseDouble(textFieldx1.getText());
         Double X=Double.parseDouble(textFieldx2.getText());
         Double N=Double.parseDouble(textFieldx3.getText());
 
-        Double n0 = Double.parseDouble(errAnaln0.getText());
-        Double eN = Double.parseDouble(errAnalN.getText());
+        Double n0 = Double.parseDouble(errorAnalysisn0.getText());
+        Double eN = Double.parseDouble(errorAnalysisN.getText());
 
 
         setCharts(x0, X, y0, N, n0, eN);

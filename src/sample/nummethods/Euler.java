@@ -1,10 +1,9 @@
 package sample.nummethods;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.chart.XYChart;
-
 import static java.lang.Math.exp;
+import static java.lang.Math.log;
 import static java.lang.Math.pow;
 
 public class Euler {
@@ -24,55 +23,74 @@ public class Euler {
         setSeries();
     }
 
-    //Set series for that solution
     private void setSeries() {
         ObservableList<XYChart.Data> dataset = FXCollections.observableArrayList();
-        ObservableList<XYChart.Data> errorDatas = FXCollections.observableArrayList();
+        ObservableList<XYChart.Data> errorsDataset = FXCollections.observableArrayList();
 
-        //Add initial dot to the data set
+        /**
+         * Adding initial value point to the data
+         * finding initial error
+         * applying Euler's function to initial point
+         */
         dataset.add(new XYChart.Data(x0, y0));
-        //Find initial error
         double error = Math.abs(exact(x0) - y0);
         maxError = error;
-        errorDatas.add(new XYChart.Data(x0, error));
-
-        double y = funcYi(x0, y0); //Euler function from initial dot
+        errorsDataset.add(new XYChart.Data(x0, error));
+        double y = funcYi(x0, y0);
 
         for (double xi = x0 + h; xi <= X; xi += h) {
-            //Calculate error
             error = Math.abs(exact(xi) - y);
-            //Find max error
             if (error > maxError){
                 maxError = error;
             }
             dataset.add(new XYChart.Data(xi, y));
-            errorDatas.add(new XYChart.Data(xi, error));
-            //Euler function for next iteration
+            errorsDataset.add(new XYChart.Data(xi, error));
             y = funcYi(xi, y);
         }
-        errorSeries.setData(errorDatas);
+        errorSeries.setData(errorsDataset);
         series.setData(dataset);
     }
 
-    //Differential Equation
+    /**
+     * Given Differential Equation
+     * @param x
+     * @param y
+     * @return
+     */
     protected double diffur(double x, double y) {
-        return (pow(exp(x)-1,2));
+        return (2*(pow(y,1/2)) + 2*y);
     }
 
-    //Helper function, get 'eulerY'
+
+    /**
+     * Function to get 'eulerY'
+     * @param xLast
+     * @param yLast
+     * @return
+     */
     protected double funcYi(double xLast, double yLast) {
         return (eulerY(xLast, yLast));
     }
 
-    //Get function y by Euler method
-    protected double eulerY(double xLast, double yLast) {
-        return yLast + h * diffur(xLast, yLast);
+
+    /**
+     * Finding y according to Euler's Method
+     * @param xPrev - previous value of x
+     * @param yPrev - previous value of y
+     * @return
+     */
+    protected double eulerY(double xPrev, double yPrev) {
+        return yPrev + h * diffur(xPrev, yPrev);
     }
 
-    //Exact Solution
-    protected double exact(double xLast) {
-        double c = (y0 + x0 - 1) / Math.exp(-x0);
-        return -xLast + 1 + c * Math.exp(-xLast);
+    /**
+     * Exact Solution
+     * @param xPrev
+     * @return
+     */
+    protected double exact(double xPrev) {
+        double cons = log(1 + pow(y0, 1/2)) - x0;
+        return pow(exp(xPrev+ cons)-1,2);
     }
 
 

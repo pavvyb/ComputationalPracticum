@@ -13,8 +13,8 @@ public class Grid {
     private double X;
     private double N;
     private double c;
-    private double n0;  //lower bound of Error Analyze chart
-    private double eN;  //upper bound
+    private double n0;
+    private double eN;
 
     /**
      * Getting the set of points for Graphs

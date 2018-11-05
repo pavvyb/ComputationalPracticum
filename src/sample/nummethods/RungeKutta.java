@@ -10,16 +10,16 @@ public class RungeKutta extends Euler {
 
     /**
      * Function to get next y for Runge-Kutta Method
-     * @param xLast -
-     * @param yLast -
+     * @param xPrev - previous value of x
+     * @param yPrev - previous value of y
      * @return
      */
     @Override
-    protected double funcYi(double xLast, double yLast) {
-        double k1 = super.h*super.diffur(xLast, yLast);
-        double k2 = super.h*super.diffur(xLast+super.h/2, yLast + k1/2);
-        double k3 = super.h*super.diffur(xLast+super.h/2, yLast + k2/2);
-        double k4 = super.h*super.diffur(xLast+super.h, yLast + k3);
-        return (yLast+ (1.0/6.0)*(k1+2*k2+2*k3+k4));
+    protected double funcYi(double xPrev, double yPrev) {
+        double k1 = super.h*super.diffur(xPrev, yPrev);
+        double k2 = super.h*super.diffur(xPrev+super.h/2, yPrev + k1/2);
+        double k3 = super.h*super.diffur(xPrev+super.h/2, yPrev + k2/2);
+        double k4 = super.h*super.diffur(xPrev+super.h, yPrev + k3);
+        return (yPrev+ (1.0/6.0)*(k1+2*k2+2*k3+k4));
     }
 }

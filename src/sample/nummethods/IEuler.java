@@ -8,9 +8,14 @@ public class IEuler extends Euler{
         super.errorSeries.setName("Improved Euler Error");
     }
 
-    //Get y_(i+1) by Improved Euler Method
+    /**
+     * Find next value of y according to Improved Euler Method
+     * @param xPrev
+     * @param yPrev
+     * @return
+     */
     @Override
-    protected double funcYi(double xLast, double yLast) {
-        return yLast+super.h*((super.diffur(xLast,yLast)+super.diffur(xLast+super.h, super.eulerY(xLast,yLast)))/2);
+    protected double funcYi(double xPrev, double yPrev) {
+        return yPrev+super.h*((super.diffur(xPrev,yPrev)+super.diffur(xPrev+super.h, super.eulerY(xPrev,yPrev)))/2);
     }
 }
