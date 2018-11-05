@@ -63,12 +63,12 @@ public class Euler {
 
     /**
      * Function to get 'eulerY'
-     * @param xLast
-     * @param yLast
+     * @param xPrev
+     * @param yPrev
      * @return
      */
-    protected double nextY(double xLast, double yLast) {
-        return (eulerY(xLast, yLast));
+    protected double nextY(double xPrev, double yPrev) {
+        return (eulerY(xPrev, yPrev));
     }
 
 

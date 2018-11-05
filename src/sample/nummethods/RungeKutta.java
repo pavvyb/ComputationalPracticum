@@ -10,6 +10,7 @@ public class RungeKutta extends Euler {
 
     /**
      * Function to get next y for Runge-Kutta Method
+     * uses super (Euler)
      * @param xPrev - previous value of x
      * @param yPrev - previous value of y
      * @return

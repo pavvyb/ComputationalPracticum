@@ -10,6 +10,7 @@ public class IEuler extends Euler{
 
     /**
      * Find next value of y according to Improved Euler Method
+     * uses super (Euler)
      * @param xPrev
      * @param yPrev
      * @return

@@ -10,7 +10,7 @@ public class Exact {
     private XYChart.Series series;
 
     public Exact(double x0, double y0, double x, double n) {
-        this.series = setSeries(x0, x, y0, n);
+        this.series = seriesGenerate(x0, x, y0, n);
     }
 
 
@@ -45,7 +45,7 @@ public class Exact {
      * @param N - input initial conditions
      * @return
      */
-    private XYChart.Series setSeries(double x0, double X, double y0, double N){
+    private XYChart.Series seriesGenerate(double x0, double X, double y0, double N){
         double h = (X-x0)/N;
         XYChart.Series series = new XYChart.Series();
 
